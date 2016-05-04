@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,8 +34,9 @@ public class TimeSaver : MonoBehaviour {
 		if(Input.GetKey(KeyCode.Space))
 		{
 			print("TimeScore: "+TimeScoreSaver ());
-			Application.LoadLevel (Application.loadedLevel);		}
+			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
+}
 
 	public float TimeScoreSaver()
 	{
