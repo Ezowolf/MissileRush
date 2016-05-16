@@ -18,7 +18,6 @@ public class RandomDirection : MonoBehaviour {
 	void Start () 
 	{
 		randomPosition = new Vector2 (Random.Range (-9999, 9999), Random.Range (-9999, 9999))*999999;
-		print (randomPosition);
 	}
 
 	void Update () 
