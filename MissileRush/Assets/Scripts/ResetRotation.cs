@@ -15,7 +15,6 @@ public class ResetRotation : MonoBehaviour {
         
         if(coll.gameObject.tag == GameTags.side)
         {
-            Debug.Log("Collision");
             rb.rotation = 0;
         }
     }
