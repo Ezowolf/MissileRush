@@ -171,4 +171,8 @@ public class PlayerMovement : MonoBehaviour {
             buttonRPressed = false;
         }
     }
+
+	public float VerticalSpeed {
+		get { return verticalSpeed; }
+	}
 }
