@@ -10,16 +10,10 @@ public class PoolMySelf : MonoBehaviour {
 		timer = 0;
 	}
 
-	void OnDisable() 
-	{
-		this.transform.position = new Vector3 (0, 0, 0);
-	}
-
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		timer++;
-		this.transform.Translate (Vector3.up);
-		if (timer >= 20) {
+		if (timer >= 200) {
 			ObjectPool.instance.PoolObject (gameObject);
 		}
 	}

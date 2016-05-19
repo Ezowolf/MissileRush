@@ -16,7 +16,7 @@ public class FlyOnscreen : MonoBehaviour {
 	private float timeInterval;
 
 	[SerializeField]
-	private GameObject shootObject; 
+	private string shootObject; 
 
 	[SerializeField]
 	[Range(1,10)]
@@ -65,7 +65,7 @@ public class FlyOnscreen : MonoBehaviour {
 	void FireObject()
 	{
 		//Fire a object at own position.
-		firedObject = Instantiate (shootObject);
+		firedObject = ObjectPool.instance.GetObjectForType(shootObject,true);
 		firedObject.transform.position = this.transform.position;
 	}
 
