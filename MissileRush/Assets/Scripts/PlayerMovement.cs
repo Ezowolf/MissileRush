@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour {
     private TouchScreenInput touchInput;
 
     private float verticalSpeed;
+
+    public float VerticalSpeed
+    {
+        get { return verticalSpeed; }
+    }
+
     private float maxVerticalSpeed;
 
     [Range(0,20)]
@@ -33,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //verticalSpeed++;
+        verticalSpeed++;
         maxVerticalSpeed++;
 
         CapMaxSpeed();
@@ -128,7 +134,7 @@ public class PlayerMovement : MonoBehaviour {
     void DecreaseMaxSpeed()
     {
         //decrease maxVerticalSpeed
-        maxVerticalSpeed -= 5;
+        maxVerticalSpeed -= 2;
     }
 
     int CheckAngle(bool onLeft)
@@ -171,8 +177,4 @@ public class PlayerMovement : MonoBehaviour {
             buttonRPressed = false;
         }
     }
-
-	public float VerticalSpeed {
-		get { return verticalSpeed; }
-	}
 }

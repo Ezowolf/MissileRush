@@ -8,10 +8,6 @@ using System.Collections;
 
 public class ChunkHandeler : MonoBehaviour {
 
-    private GameObject[] chunks = new GameObject[29];
-
-    private 
-
     void Start()
     {
         BackgroundScroller.OnDespawn += SpawnNewBackground;

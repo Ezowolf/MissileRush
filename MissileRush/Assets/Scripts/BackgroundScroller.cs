@@ -10,17 +10,21 @@ public class BackgroundScroller : MonoBehaviour
 {
     [SerializeField] private int iD;
     private Camera mainCam;
-    private Vector3 startPos = new Vector3(0, 10, 0);
+    private Vector3 startPos = new Vector3(0, 10f, 0);
 
     public delegate void Despawn(int id);
     public static event Despawn OnDespawn;
+
+    private PlayerMovement pMovement;
 
     [SerializeField]
     private bool startChunk;
 
     void OnEnable()
     {
-        mainCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        pMovement = GameObject.FindWithTag(GameTags.player).GetComponent<PlayerMovement>();
+
+        mainCam = GameObject.FindWithTag(GameTags.mainCam).GetComponent<Camera>();
         if (startChunk == false)
             transform.position = startPos;
         else
@@ -44,6 +48,13 @@ public class BackgroundScroller : MonoBehaviour
         }
     }
 
+    /*
+    void OnBecameInvisible()
+    {
+        ObjectPool.instance.PoolObject(gameObject);
+    }
+     * */
+
     void OnDisable()
     {
         //let chunk spawner class know to enable new background
@@ -53,7 +64,9 @@ public class BackgroundScroller : MonoBehaviour
 
     void ScrollDown()
     {
-        transform.Translate(new Vector2(0, -2f) * Time.deltaTime);
+
+        float scrollSpeed = -pMovement.VerticalSpeed / 40;
+        transform.Translate(new Vector2(0, scrollSpeed) * Time.deltaTime);
         //ajust speed depending on player
     }
 }
