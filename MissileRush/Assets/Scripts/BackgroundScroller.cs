@@ -20,19 +20,26 @@ public class BackgroundScroller : MonoBehaviour
     [SerializeField]
     private bool startChunk;
 
-    void OnEnable()
+
+    void Start()
     {
         pMovement = GameObject.FindWithTag(GameTags.player).GetComponent<PlayerMovement>();
 
         mainCam = GameObject.FindWithTag(GameTags.mainCam).GetComponent<Camera>();
+    }
+    void OnEnable()
+    {   
         if (startChunk == false)
             transform.position = startPos;
         else
             transform.position = Vector3.zero;
+
+        Debug.Log("Background Loaded " + iD);
     }
 
     void Update()
     {
+        Debug.Log(Time.timeScale);
         //check speed at which background needs to move
         ScrollDown();
         //if below screen, go back into objectpool

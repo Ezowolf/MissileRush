@@ -9,10 +9,11 @@ public class ObstacleSpawner : MonoBehaviour {
     void Start()
     {
         BackgroundScroller.OnDespawn += DebugID;
+        Debug.Log("Obstacle Spawner Loaded");
     }
+
     void DebugID(int id)
     {
-        Debug.Log(id);
         SpawnObstacle(id);
     }
 
@@ -30,6 +31,11 @@ public class ObstacleSpawner : MonoBehaviour {
             int random = Random.Range(0, 5);
             RandomizeSpawn(random);
         } 
+    }
+
+    void OnDisable()
+    {
+        BackgroundScroller.OnDespawn -= DebugID;
     }
 
     void RandomizeSpawn(int random)

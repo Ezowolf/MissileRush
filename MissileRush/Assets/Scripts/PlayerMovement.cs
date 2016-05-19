@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour {
         touchInput = GetComponent<TouchScreenInput>();
         
         maxVerticalSpeed = 100f;
+
+
+        Debug.Log("Player Loaded");
     }
 
     void FixedUpdate()
