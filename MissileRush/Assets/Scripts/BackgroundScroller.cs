@@ -17,6 +17,9 @@ public class BackgroundScroller : MonoBehaviour
 
     private PlayerMovement pMovement;
 
+    //this variable determines the amount of seconds before despawning the background after it has gone offscreen in unity editor
+    private float despawnDelay = 1f;
+
     [SerializeField]
     private bool startChunk;
 
@@ -51,22 +54,23 @@ public class BackgroundScroller : MonoBehaviour
         Vector3 screenPos = mainCam.WorldToScreenPoint(transform.position);
         if (screenPos.y <= -280)
         {
-            ObjectPool.instance.PoolObject(gameObject);
+            //let chunk spawner class know to enable new background
+            if (OnDespawn != null)
+                OnDespawn(iD);
+
+            StartCoroutine(DelayDespawn());
         }
     }
 
-    /*
-    void OnBecameInvisible()
+    IEnumerator DelayDespawn()
     {
+        yield return new WaitForSeconds(despawnDelay);
         ObjectPool.instance.PoolObject(gameObject);
     }
-     * */
 
     void OnDisable()
     {
-        //let chunk spawner class know to enable new background
-        if (OnDespawn != null)
-            OnDespawn(iD);
+        
     }
 
     void ScrollDown()

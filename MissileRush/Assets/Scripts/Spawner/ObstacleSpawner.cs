@@ -6,15 +6,31 @@ public class ObstacleSpawner : MonoBehaviour {
 
     [SerializeField] private string alien1, alien2, satalite, asteroid1, asteroid2;
 
+    private int spawnCooldown;
+
     void Start()
     {
         BackgroundScroller.OnDespawn += DebugID;
         Debug.Log("Obstacle Spawner Loaded");
     }
 
+    void FixedUpdate()
+    {
+        if (spawnCooldown > 0)
+            spawnCooldown--;
+        else
+            spawnCooldown = 0;
+    }
+
     void DebugID(int id)
     {
-        SpawnObstacle(id);
+        if(spawnCooldown == 0)
+        {
+            SpawnObstacle(id);
+            spawnCooldown = 60;
+        }
+            
+        //BackgroundScroller.OnDespawn -= DebugID;
     }
 
     void SpawnObstacle(int id)
