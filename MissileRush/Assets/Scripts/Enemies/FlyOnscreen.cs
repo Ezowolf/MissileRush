@@ -30,7 +30,7 @@ public class FlyOnscreen : MonoBehaviour {
 		ActivateShootingProcedure ();
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		//Executes the actions in the states.
 		if(state == 1)

@@ -6,7 +6,6 @@ public class MoveAround : MonoBehaviour {
 	private float timeInterval = 1;
 	[SerializeField]
 	private Vector3 flyInPosition;
-	private Vector3 target;
 	private float state = 1;
 	[SerializeField]
 	private float moveSpeed = 0.1f;
@@ -14,7 +13,6 @@ public class MoveAround : MonoBehaviour {
 	void Start () 
 	{
 		startPosition = transform.position;
-		target = flyInPosition;
 	}
 
 	IEnumerator changeStateAfterTime(float _whatState)
@@ -24,7 +22,7 @@ public class MoveAround : MonoBehaviour {
 
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		if(state == 1)
 			FlyTowards (flyInPosition);
@@ -42,6 +40,7 @@ public class MoveAround : MonoBehaviour {
 
 	void FlyTowards(Vector2 _flyTarget)
 	{
+		_flyTarget = new Vector2 (_flyTarget.x, transform.position.y);
 		this.transform.position = Vector2.MoveTowards (this.transform.position, _flyTarget, moveSpeed);
 		//Move at the designated speed towards a point.
 	}
