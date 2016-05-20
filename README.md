@@ -13,3 +13,4 @@ Enemy AI: https://github.com/Ezowolf/MissileRush/blob/master/MissileRush/Assets/
 
 Jochem:
 Chunk Handler: https://github.com/Ezowolf/MissileRush/blob/master/MissileRush/Assets/Scripts/ChunkHandeler.cs
+Background Scroller: https://github.com/Ezowolf/MissileRush/blob/master/MissileRush/Assets/Scripts/BackgroundScroller.cs
