@@ -4,10 +4,10 @@ using System.Collections;
 public class MoveOneWay : MonoBehaviour {
 
 	[SerializeField]
-	private Vector2 movementVector; 
-	// Update is called once per frame
+	private Vector2 movementVector;
+
 	void FixedUpdate () 
 	{
-		transform.Translate (movementVector*Time.deltaTime, Space.World);	
+		transform.Translate (movementVector*Time.deltaTime, Space.World);
 	}
 }

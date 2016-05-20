@@ -34,13 +34,20 @@ public class FlyOnscreen : MonoBehaviour {
 	{
 		//Executes the actions in the states.
 		if(state == 1)
-		FlyTowards (flyInPosition);
+		    FlyTowards (flyInPosition);
 		if (state == 2)
-		FlyTowards (startPosition);	
+		    FlyTowards (startPosition);	
 		if (this.transform.position.x == flyInPosition.x&&state==1) 
 		{
 			StartCoroutine (firingTime());
 		}
+
+        //check if shooting enemy is done with his routine
+        if(state == 2 && transform.position.x == startPosition.x)
+        {
+            Debug.Log("Shooting enemy is done");
+            ObjectPool.instance.PoolObject(gameObject);
+        }
 
 	}
 

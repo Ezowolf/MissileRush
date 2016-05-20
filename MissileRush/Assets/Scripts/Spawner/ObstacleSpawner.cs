@@ -11,7 +11,6 @@ public class ObstacleSpawner : MonoBehaviour {
     void Start()
     {
         BackgroundScroller.OnDespawn += DebugID;
-        Debug.Log("Obstacle Spawner Loaded");
     }
 
     void FixedUpdate()
@@ -29,8 +28,6 @@ public class ObstacleSpawner : MonoBehaviour {
             SpawnObstacle(id);
             spawnCooldown = 60;
         }
-            
-        //BackgroundScroller.OnDespawn -= DebugID;
     }
 
     void SpawnObstacle(int id)
@@ -38,7 +35,7 @@ public class ObstacleSpawner : MonoBehaviour {
         if (id > 15)
         {
             //randomize between all 4 obstacles
-            int random = Random.Range(0, 3);
+            int random = Random.Range(0, 2);
             RandomizeSpawn(random);
         }
         else

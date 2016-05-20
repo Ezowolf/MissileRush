@@ -19,7 +19,6 @@ public class MoveAround : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (timeInterval);
 		state = _whatState;
-
 	}
 
 	void FixedUpdate()

@@ -36,13 +36,10 @@ public class BackgroundScroller : MonoBehaviour
             transform.position = startPos;
         else
             transform.position = Vector3.zero;
-
-        Debug.Log("Background Loaded " + iD);
     }
 
     void Update()
     {
-        Debug.Log(Time.timeScale);
         //check speed at which background needs to move
         ScrollDown();
         //if below screen, go back into objectpool
@@ -76,7 +73,7 @@ public class BackgroundScroller : MonoBehaviour
     void ScrollDown()
     {
 
-        float scrollSpeed = -pMovement.VerticalSpeed / 40;
+        float scrollSpeed = -pMovement.VerticalSpeed / 45;
         transform.Translate(new Vector2(0, scrollSpeed) * Time.deltaTime);
         //ajust speed depending on player
     }
