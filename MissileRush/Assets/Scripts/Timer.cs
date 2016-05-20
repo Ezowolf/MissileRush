@@ -19,9 +19,9 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        minutes = Time.time / 60;
-        seconds = Time.time % 60;
-        milliseconds = Time.time * 1000;
+		minutes = Time.timeSinceLevelLoad / 60;
+		seconds = Time.timeSinceLevelLoad % 60;
+		milliseconds = Time.timeSinceLevelLoad * 1000;
         milliseconds = milliseconds % 10;
 
 		timeText.text = Mathf.Floor (minutes) + ":" + Mathf.Floor (seconds);// + ":" + Mathf.Floor(milliseconds);
