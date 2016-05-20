@@ -24,8 +24,9 @@ public class FlyOnscreen : MonoBehaviour {
 
 	private GameObject firedObject;
 
-	void Start()
+	void OnEnable()
 	{
+        state = 0;
 		startPosition = transform.position;
 		ActivateShootingProcedure ();
 	}
