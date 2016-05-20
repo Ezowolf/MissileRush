@@ -46,7 +46,6 @@ public class FlyOnscreen : MonoBehaviour {
         //check if shooting enemy is done with his routine
         if(state == 2 && transform.position.x == startPosition.x)
         {
-            Debug.Log("Shooting enemy is done");
             ObjectPool.instance.PoolObject(gameObject);
         }
 

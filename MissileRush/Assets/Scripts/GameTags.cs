@@ -9,4 +9,5 @@ public class GameTags {
     public const string background = "Background";
     public const string mainCam = "MainCamera";
 	public const string enemy = "Enemy";
+    public const string mShip = "MotherShip";
 }

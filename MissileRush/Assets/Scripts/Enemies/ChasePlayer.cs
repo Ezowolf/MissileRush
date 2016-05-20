@@ -14,7 +14,7 @@ public class ChasePlayer : MonoBehaviour {
 	{
 		playerTransform = GameObject.FindGameObjectWithTag (GameTags.player).GetComponent<Transform> ();
 		target = new Vector2 (playerTransform.position.x, playerTransform.position.y * 1.5f);
-		print(target);
+		//print(target);
 	}
 
 	void OnAwake()

@@ -6,7 +6,7 @@ public class MoveOneWay : MonoBehaviour {
 	[SerializeField]
 	private Vector2 movementVector;
 
-    private Vector2 startPos = new Vector2(0,11);
+    private Vector2 startPos = new Vector2(0,6);
 
     [SerializeField] private bool randomize = false;
 

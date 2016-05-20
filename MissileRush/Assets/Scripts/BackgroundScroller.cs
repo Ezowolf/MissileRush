@@ -65,16 +65,10 @@ public class BackgroundScroller : MonoBehaviour
         ObjectPool.instance.PoolObject(gameObject);
     }
 
-    void OnDisable()
-    {
-        
-    }
-
     void ScrollDown()
     {
-
-        float scrollSpeed = -pMovement.VerticalSpeed / 45;
-        transform.Translate(new Vector2(0, scrollSpeed) * Time.deltaTime);
         //ajust speed depending on player
+        float scrollSpeed = -pMovement.VerticalSpeed / 50;
+        transform.Translate(new Vector2(0, scrollSpeed) * Time.deltaTime);
     }
 }

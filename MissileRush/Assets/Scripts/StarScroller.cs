@@ -20,7 +20,7 @@ public class StarScroller : MonoBehaviour {
     void CheckAlphaLevel(int iD)
     {
         //check what background was enabled
-        if(iD > 15)
+        if(iD > 13)
         {
             starsVisible = true;
         }
@@ -28,7 +28,7 @@ public class StarScroller : MonoBehaviour {
 
     void Update()
     {
-        transform.Translate(new Vector3(0, -3, 0) * Time.deltaTime);
+        transform.Translate(new Vector3(0, -6, 0) * Time.deltaTime);
 
         if(starsVisible == true)
         {
