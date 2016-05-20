@@ -24,6 +24,6 @@ public class Timer : MonoBehaviour
         milliseconds = Time.time * 1000;
         milliseconds = milliseconds % 10;
 
-        timeText.text = Mathf.Floor(minutes) + ":" + Mathf.Floor(seconds) + ":" + Mathf.Floor(milliseconds);
+		timeText.text = Mathf.Floor (minutes) + ":" + Mathf.Floor (seconds);// + ":" + Mathf.Floor(milliseconds);
     }
 }
