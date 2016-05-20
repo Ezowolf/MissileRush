@@ -26,8 +26,15 @@ public class PoolObjectOnScreenPos : MonoBehaviour {
         if (screenPos.y <= -180)
         {
             //enemy is offscreen and can be put back in objpool
-            ObjectPool.instance.PoolObject(gameObject);
+			StartCoroutine(DeleteObject());
         }
     }
+
+
+	IEnumerator DeleteObject()
+	{
+		yield return new WaitForSeconds (10);
+		ObjectPool.instance.PoolObject(gameObject);
+	}
 
 }
