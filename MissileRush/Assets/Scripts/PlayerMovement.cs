@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private float maxVerticalSpeed;
 
+    private bool canMove = false;
+
     [Range(0,20)]
     [SerializeField] private float strafeSpeed;
     private float maxStrafeSpeed = 20;
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour {
         touchInput = GetComponent<TouchScreenInput>();
         
         maxVerticalSpeed = 100f;
+
+        StartCoroutine(enableMovement());
     }
 
     void FixedUpdate()
@@ -134,7 +138,7 @@ public class PlayerMovement : MonoBehaviour {
     void DecreaseMaxSpeed()
     {
         //decrease maxVerticalSpeed
-        maxVerticalSpeed -= 2;
+        maxVerticalSpeed -= 3;
     }
 
     int CheckAngle(bool onLeft)
@@ -156,25 +160,34 @@ public class PlayerMovement : MonoBehaviour {
         Touch();
     }
 
+    IEnumerator enableMovement()
+    {
+        yield return new WaitForSeconds(1.7f);
+        canMove = true;
+    }
+
     void Touch()
     {
         //read touch inputs
-        if (touchInput.touchL == true)
+        if(canMove)
         {
-            buttonLPressed = true;
-        }
-        else if (touchInput.touchL == false)
-        {
-            buttonLPressed = false;
-        }
+            if (touchInput.touchL == true)
+            {
+                buttonLPressed = true;
+            }
+            else if (touchInput.touchL == false)
+            {
+                buttonLPressed = false;
+            }
 
-        if (touchInput.touchR == true)
-        {
-            buttonRPressed = true;
-        }
-        else if (touchInput.touchR == false)
-        {
-            buttonRPressed = false;
+            if (touchInput.touchR == true)
+            {
+                buttonRPressed = true;
+            }
+            else if (touchInput.touchR == false)
+            {
+                buttonRPressed = false;
+            }
         }
     }
 }
