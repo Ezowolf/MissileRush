@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 public class GameOverOnCollision : MonoBehaviour {
 
 	[SerializeField]
@@ -7,8 +8,17 @@ public class GameOverOnCollision : MonoBehaviour {
     [SerializeField]
     private GameObject gameWin;
 
+    [SerializeField]
+    private GameObject explosion;
+
 	[SerializeField]
 	private GameObject pauseButton;
+
+    [SerializeField]
+    private SpriteRenderer sRender;
+
+    [SerializeField]
+    private BoxCollider2D bc2D;
 
 	void OnEnable()
 	{
@@ -18,7 +28,9 @@ public class GameOverOnCollision : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) 
 	{
 		if (coll.gameObject.tag == GameTags.enemy) {
-			//GameOver ();
+			GameOver();
+            Time.timeScale = 0.4f;
+            StartCoroutine(LoseRoutine());
 		}
 
         if(coll.gameObject.tag == GameTags.mShip)
@@ -27,9 +39,14 @@ public class GameOverOnCollision : MonoBehaviour {
         }
 	}
 
-    void OnMouseDown()
+    IEnumerator LoseRoutine()
     {
-        GameWon();
+        //play particle
+        sRender.enabled = false;
+        bc2D.enabled = false;
+        explosion.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        GameOver();
     }
 
     public void GameWon()
