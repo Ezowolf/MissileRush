@@ -10,15 +10,20 @@ public class GameOverOnCollision : MonoBehaviour {
 	[SerializeField]
 	private GameObject pauseButton;
 
+	[SerializeField]
+	private AudioClip explode;
+	private AudioSource audioSource;
+
 	void OnEnable()
 	{
+		audioSource = GetComponent<AudioSource>();
 		Time.timeScale = 1;
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) 
 	{
 		if (coll.gameObject.tag == GameTags.enemy) {
-			//GameOver ();
+			GameOver ();
 		}
 
         if(coll.gameObject.tag == GameTags.mShip)
@@ -41,6 +46,7 @@ public class GameOverOnCollision : MonoBehaviour {
 
 	public void GameOver()
 	{
+		audioSource.PlayOneShot (explode);
 		Time.timeScale = 0;
 		gameOver.SetActive (true);
 		pauseButton.SetActive (false);
