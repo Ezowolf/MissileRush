@@ -24,8 +24,19 @@ public class FlyOnscreen : MonoBehaviour {
 
 	private GameObject firedObject;
 
+	[SerializeField]
+	private AudioClip laser;
+	private AudioSource audioSource;
+
+	[SerializeField]
+	private float xOffset;
+
+	[SerializeField]
+	private float yOffset;
+
 	void OnEnable()
 	{
+		audioSource = GetComponent<AudioSource>();
         state = 0;
 		startPosition = transform.position;
 		ActivateShootingProcedure ();
@@ -72,8 +83,9 @@ public class FlyOnscreen : MonoBehaviour {
 	void FireObject()
 	{
 		//Fire a object at own position.
+		audioSource.PlayOneShot(laser);
 		firedObject = ObjectPool.instance.GetObjectForType(shootObject,true);
-		firedObject.transform.position = this.transform.position;
+		firedObject.transform.position = new Vector2 (this.transform.position.x + xOffset, this.transform.position.y + yOffset);
 	}
 
 	public void ActivateShootingProcedure()

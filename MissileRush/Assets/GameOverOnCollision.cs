@@ -19,9 +19,13 @@ public class GameOverOnCollision : MonoBehaviour {
 
     [SerializeField]
     private BoxCollider2D bc2D;
+	[SerializeField]
+	private AudioClip explode;
+	private AudioSource audioSource;
 
 	void OnEnable()
 	{
+		audioSource = GetComponent<AudioSource>();
 		Time.timeScale = 1;
 	}
 
@@ -31,6 +35,7 @@ public class GameOverOnCollision : MonoBehaviour {
 			GameOver();
             Time.timeScale = 0.4f;
             StartCoroutine(LoseRoutine());
+			GameOver ();
 		}
 
         if(coll.gameObject.tag == GameTags.mShip)
@@ -58,6 +63,7 @@ public class GameOverOnCollision : MonoBehaviour {
 
 	public void GameOver()
 	{
+		audioSource.PlayOneShot (explode);
 		Time.timeScale = 0;
 		gameOver.SetActive (true);
 		pauseButton.SetActive (false);
